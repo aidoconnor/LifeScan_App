@@ -1,0 +1,165 @@
+/* Used to change content based on device size */
+/* Source -  http://css-tricks.com/snippets/css/media-queries-for-standard-devices */
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+body 
+{
+	font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	margin: auto;
+}
+
+header
+{
+	background-color: #eae8e8;
+	height: 130px;
+	margin-bottom: 15px;
+}
+
+#banner
+{
+	width: 50%;
+	padding-top: 5px;
+	margin: auto;
+}
+
+#banner img 
+{
+    display: block;
+    margin: 0 auto;
+}
+
+h2
+{
+	color: red;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 5px;
+	text-shadow: 1px 1px #000000;
+	width:340px;
+}
+
+#content
+{
+	width: 430px;
+	margin: 0 auto;
+	border: 1px solid;
+	background-color: #eae8e8;
+	border-radius: 10px;
+}
+
+ul
+{
+	list-style: none;
+}
+
+label
+{
+	display: inline-block;
+	width: 100px;
+}
+
+.fullWidthLabel
+{
+	display: block;
+	width:250px;
+}
+
+li
+{
+	width:350px;
+	border-bottom: 1px solid;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+li:last-child
+{
+	border-bottom: none;
+}
+
+.button,.backButton,.addButton,.generateQrCodeButton,.linktoQrCodeButton
+{
+	display: inline;
+	font-size: 14px;
+	background-color: red;
+	color: white;
+	border-radius: 5px;
+	width: 100px;
+	height: 35px;
+	text-align: center;
+	border: 1px solid #000000;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+.generateQrCodeButton{
+	margin-left: 125px;
+}
+
+.backButton
+{
+	margin-right: 105px;
+}
+
+.medications td
+{
+	width: 100px;
+	padding-left: 5px;
+	padding-bottom: 7px;
+}
+
+input[type="text"] 
+{
+    width: 130px;
+    margin-bottom: 10px;
+}
+
+.medications input
+{
+	width: 100px;
+	margin-bottom: 10px;
+}
+
+.allergies td, .allergies input
+{
+	width: 130px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+.emergency_contacts td,.emergency_contacts input
+{
+	width: 100px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+#qrScreen,#contactDetails,#medical_information,#emergency_contacts,#physician_details,#pharmacy_details,#hospital_details,#health_insurance
+{
+	display: none;
+}
+
+#contactDetails li
+{
+	list-style: none;
+}

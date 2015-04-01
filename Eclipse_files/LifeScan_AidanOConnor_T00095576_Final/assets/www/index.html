@@ -1,0 +1,474 @@
+<html>
+<head>
+	<script type="text/javascript" charset="utf-8" src="phonegap-2.7.0.js"></script>
+	<meta charset="utf-8">
+	<title>LifeScan - Medical Information QR Code</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" charset="utf-8">
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+    	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        window.localStorage.setItem("key", "value");
+        var keyname = window.localStorage.key(i);
+        // keyname is now equal to "key"
+        var value = window.localStorage.getItem("key");
+        // value is now equal to "value"
+        window.localStorage.removeItem("key");
+        window.localStorage.setItem("key2", "value2");
+        window.localStorage.clear();
+        // localStorage is now empty
+    }
+    </script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+
+	<header>
+		<div id="banner">
+		<img src="img/logo2.png" id="logo" align="middle">
+		</div>
+
+	</header>
+
+	<div id="content">
+
+	
+
+		<div id="personalDetails">
+
+			<ul>
+
+				<li>
+					<h2>Personal Details</h2>
+					<label>Name:</label>
+					<input type="text" name="fullName" id="fullName" placeholder="John Doe" required/>
+				</li>
+
+				<li>
+					<label>Date of Birth:</label>
+					<input type="text" name="date_of_birth" id="date_of_birth"  placeholder="01/01/2014" required/>
+				</li>
+
+				<li>
+					<label>Height:</label>
+					<input type="text" name="height" id="height" placeholder="5.10" required/>
+				</li>
+
+				<li>
+					<label>Weight:</label>
+					<input type="text" name="weight" id="weight" placeholder="10 stone 3 pounds" required/>
+				</li>
+
+				<li>
+					<label>Nationality:</label>
+					<input type="text" name="nationality" id="nationality" placeholder="Irish" required />
+				</li>
+
+				<li>
+					<button class="button" onclick="validatePersonalDetails()">Next</button>
+
+				</li>
+			</ul>
+
+			</div>
+
+		<div id="contactDetails">
+			<ul>
+				<li>
+					<h2>Contact Details</h2>
+					<label>Address:</label>
+					<input type="text" name="address" id="address" placeholder="College Road" required/>
+				</li>
+
+				<li>
+					<label>Town:</label>
+					<input type="text" name="town" id="town" placeholder="Castleisland" required/>
+				</li>
+
+				<li>
+					<label>County:</label>
+					<input type="text" name="county" id="county"  placeholder="Kerry" required/>
+				</li>
+
+				<li>
+					<label>Phone:</label>
+					<input type="text" name="phone" id="phone" placeholder="0871234567" required/>
+				</li>
+
+				<li>
+					<button class="backButton" type="submit" onclick="backToPersonalDetails()">Back</button>
+					<button class="button" type="submit" onclick="validateContactDetails()">Next</button>
+				</li>
+			</ul>
+		</div>	
+	
+	<div id="medical_information">
+			<ul>
+				<li>
+					<h2>Medical Information</h2>
+					<label class="fullWidthLabel">Do you regulary take medications:</label>
+					<input type="radio" name="YesMed" id="YesMed" value="Yes I take medication">Yes</input>
+					<input type="radio" name="NoMed" id="NoMed" value="No I do not take medication">No</input>
+				</li>
+
+				<li>
+					<label class="fullWidthLabel">Please list medications:</label>
+					<br/>
+					<table class="medications">
+						<tr>
+							<td>Name</td>
+							<td>Dose</td>		
+						</tr>
+							<td><input type="text" name="med_name" id="med_name" placeholder="Medication name" required/></td>
+							<td><input type="text" name="med_dose" id="med_dose" placeholder="10mg" required/></td>
+						<tr>
+
+						</tr>
+
+						<tr>
+							<td>Frequency</td>
+							<td>Quantity</td>
+						</tr>
+
+						<tr>
+							<td><input type="text" name="med_frequency" id="med_frequency" placeholder="once a day" required/></td>
+							<td><input type="text" name="med_quantity" id="med_quantity" placeholder="1 per day" required/></td>
+						</tr>
+					</table>
+					<button class="addButton" id="addMedication">Add</button>
+				</li>
+
+				<li>
+					<label class="fullWidthLabel">Do you suffer from any allergies:</label>
+					<br/>
+					<input type="radio" name="YesAllergy" id="YesAllergy" value="Yes I have an allergy">Yes</input>
+					<input type="radio" name="NoAllergy" id="NoAllergy" value="Yes I do not have an allergy">No</input>
+				</li>
+
+				<li>
+					<label class="fullWidthLabel">Please list allergies:</label>
+					<table class="allergies">
+						<tr>
+							<td>Allergy</td>
+							<td>Reaction</td>
+						</tr>
+
+						<tr>
+							<td><input type="text" name="allergy" id="allergy" placeholder="Allergy" required/></td>
+							<td><input type="text" name="reaction" id="reaction" placeholder="Reaction" required/></td>
+						</tr>
+					</table>
+					<button class="addButton" id="addAllergyRow">Add</button>
+				</li>
+
+				<li>
+					<label class="fullWidthLabel">Do you have a medical condition:</label>
+					<input type="radio" name="YesMedCondition" id="YesMedCondition" value="Yes I have a medical Condition">Yes</input>
+					<input type="radio" name="NoMedCondition" id="NoMedCondition" value="No I do not have a medical Condition">No</input>
+					<br/>
+					<table class="med_condition">
+						<tr>
+							<td>Condition</td>
+							<td>Start Date</td>
+						</tr>
+
+						<tr>
+							<td><input type="text" name="condition" id="condition" placeholder="Diabetes" required/></td>
+							<td><input type="text" name="start_date" id="start_date" placeholder="01/01/2014" required/></td>
+						</tr>
+					</table>
+					<button class="addButton" id="addCondition">Add</button>
+				</li>
+
+				<li>
+					
+					<button class="backButton" onclick="backToContactDetails()">Back</button>
+					<button class="button" onclick="validateMedicalInformation()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+
+		<div id="emergency_contacts">
+			<ul>
+				<li>
+					<h2>Emergency Contacts</h2>
+					<label class="fullWidthLabel">Emergency Contact</label>
+						<table class="emergency_contacts">
+							<tr>
+								<td>Name</td>
+								<td>Relationship</td>
+								<td>Phone No</td>
+							</tr>
+
+							<tr>
+								<td><input type="text" name="emergency_name" id="emergency_name" placeholder="John Doe" required/></td>
+								<td><input type="text" name="emergency_relationship" id="emergency_relationship" placeholder="Brother" required/></td>
+								<td><input type="text" name="emergency_phone" id="emergency_phone" placeholder="0871234567" required/></td>
+							</tr>
+						</table>
+					<button class="addButton" id="addEmergencyContact">Add</button>
+				</li>
+
+				<li>				
+				<button class="backButton" onclick="backToMedicalInformation()">Back</button>
+				<button class="button" onclick="validateEmergencyContacts()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="physician_details">
+			<ul>
+				<li>
+					<h2>Physician Details</h2>
+					<label>Name:</label>
+					<input type="text" name="physician_name" id="physician_name" placeholder="You Local GP's Name" required/>
+				</li>
+
+				<li>
+					<label>Address:</label>
+					<input type="text" name="physician_address" id="physician_address" placeholder="Full Address" required/>
+				</li>
+
+				<li>
+					<label>Phone No:</label>
+					<input type="text" name="physician_no" id="physician_no" placeholder="0667100000" required/>
+				</li>
+
+				<li>		
+					<button class="backButton" onclick="backToEmergencyContacts()">Back</button>
+					<button class="button" onclick="validatePhysicianDetails()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="hospital_details">
+			<ul>
+				<li>
+					<h2>Hospital Details</h2>
+					<label>Name:</label>
+					<input type="text" name="hospital_name" id="hospital_name" placeholder="Your Hospital Name" required/>
+				</li>
+
+				<li>
+					<label>Address:</label>
+					<input type="text" name="hospital_address" id="hospital_address" placeholder="Full Address" required/>
+				</li>
+
+				<li>
+					<label>Phone No:</label>
+					<input type="text" name="hospital_phone_no" id="hospital_phone_no" placeholder="0667100000" required/>
+				</li>
+
+				<li>
+					<button class="backButton" onclick="backToPhysicianDetails()">Back</button>
+					<button class="button" onclick="validateHospitalDetails()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="pharmacy_details">
+			<ul>
+				<li>
+					<h2>Pharmacy Details</h2>
+					<label>Name:</label>
+					<input type="text" name="pharmacy_name" id="pharmacy_name" placeholder="Your pharmacy name" required/>
+				</li>
+
+				<li>
+					<label>Address:</label>
+					<input type="text" name="pharmacy_address" id="pharmacy_address" placeholder="Full Address" required/>
+				</li>
+
+				<li>
+					<label>Phone No:</label>
+					<input type="text" name="pharmacy_phone_no" id="pharmacy_phone_no" placeholder="0667100000" required/>
+				</li>
+
+				<li>
+					<button class="backButton" onclick="backToHospitalDetails()">Back</button>
+					<button class="button" onclick="validatePharmacyDetails()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="health_insurance">
+			<ul>
+				<li>
+					<h2>Health Insurance</h2>
+					<label>Company:</label>
+					<input type="text" name="insurance_name" id="insurance_name" placeholder="VHI, Aviva" required/>
+				</li>
+
+				<li>
+					<label>Policy Holder:</label>
+					<input type="text" name="insurance_holder_name" id="insurance_holder_name" placeholder="Holder's Name" required/>
+				</li>
+
+				<li>
+					<label>Member ID:</label>
+					<input type="text" name="insurance_member_id" id="insurance_member_id" placeholder="Member ID Number" required/>
+				</li>
+
+				<li>
+					<label>Phone No:</label>
+					<input type="text" name="insurance_phone_no" id="insurance_phone_no" placeholder="1890000000" required/>
+				</li>
+
+				<li>	
+					<button class="backButton" onclick="backToPharmacyDetails()">Back</button>
+					<button class="button" onclick="validateHealthInsurance()">Next</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="qrScreen">
+				<ul>
+					<li>
+						<h2>Generate QR Code</h2>
+					</li>
+
+					<li>
+						<label class="fullWidthLabel">Select QR Code Size:</label>
+						<select id="selectQrSize">
+							<option value="150x150">150x150</option>
+							<option value="300x300">300x300</option>
+							<option value="400x400" selected>400x400</option>
+						</select>
+						<button class="generateQrCodeButton" type="submit" value="Generate QR Code" onclick="generateQRCode()">Generate QR Code
+						</button>
+					</li>
+
+					<li>
+						<img id="QRImage" src="img/sample_qr_code.jpg"  width="150" height="150">
+					</li>
+
+					<li id="generated_image">
+					</li>
+
+					<li>
+						<button class="backButton" onclick="backToHealthInsurance()">Back</button>
+						<button class="button" onclick="DownloadFile(urlToQrCode, 'QR Codes', 'QR code image');">Save Image</button>
+					</li>	
+				</ul>
+			</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="javascript/script.js"></script>
+<script type="text/javascript">
+//JQuery used to add rows to tables
+$(document).ready(function() {
+    $('#addAllergyRow').click(function() {
+        $('.allergies').append
+        ('<tr><td><input type="text" name="allergy" id="allergy"/></td><td><input type="text" name="reaction" id="reaction" /></td></tr');
+    });
+
+    $('#addCondition').click(function() {
+        $('.med_condition').append
+        ('<tr><td><input type="text" name="condition" id="condition"/></td><td><input type="text" name="start_date" id="start_date"/></td></tr>');
+    });
+
+    $('#addMedication').click(function() {
+        $('.medications').append
+        ('<tr><td>Name</td><td>Dose</td></tr><td><input type="text" name="med_name" id="med_name"/></td><td><input type="text" name="med_dose" id="med_dose"/></td></tr><tr></tr><tr><td>Frequency</td><td>Quantity</td></tr><td><input type="text" name="med_frequency" id="med_frequency" /></td><td><input type="text" name="med_quantity" id="med_quantity"/></td><tr>');
+    });
+
+    $('#addEmergencyContact').click(function() {
+    $('.emergency_contacts').append
+        ('<tr><td><input type="text" name="emergency_name" id="emergency_name"/></td><td><input type="text" name="emergency_relationship" id="emergency_relationship"/></td><td><input type="text" name="emergency_phone" id="emergency_phone"/></td></tr');
+    });
+
+    $(".button").hover(function(){
+    $(".button").css("background-color","#730505");
+    },function(){
+    $(".button").css("background-color","red");
+  });
+
+    $(".backButton").hover(function(){
+    $(".backButton").css("background-color","#730505");
+    },function(){
+    $(".backButton").css("background-color","red");
+  });
+
+});
+
+
+
+//tried to download qr image into gallery
+//REF: http://stackoverflow.com/questions/21577230/phonegap-save-image-from-url-into-device-photo-gallery
+
+//First step check parameters mismatch and checking network connection if available call    download function
+function DownloadFile(URL, Folder_Name, File_Name) {
+
+//Parameters mismatch check
+	if (URL == null && Folder_Name == null && File_Name == null) 
+	{
+	    return;
+	}
+	else 
+	{
+	    //checking Internet connection availablity
+	    var networkState = navigator.connection.type;
+	    if (networkState == Connection.NONE) {
+	        return;
+	    } else {
+	        download(URL, Folder_Name, File_Name); //If available download function call
+	    }
+	  }
+	}
+
+function download(URL, Folder_Name, File_Name) {
+//step to request a file system 
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
+
+function fileSystemSuccess(fileSystem) {
+    var download_link = encodeURI(URL);
+    ext = download_link.substr(download_link.lastIndexOf('.') + 1); //Get extension of URL
+
+    var directoryEntry = fileSystem.root; // to get root path of directory
+    directoryEntry.getDirectory(Folder_Name, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+    var rootdir = fileSystem.root;
+    var fp = rootdir.fullPath; // Returns Fulpath of local directory
+
+    fp = fp + "/" + Folder_Name + "/" + File_Name + "." + ext; // fullpath and name of the file which we want to give
+    // download function call
+    filetransfer(download_link, fp);
+}
+
+function onDirectorySuccess(parent) {
+    // Directory created successfuly
+}
+
+function onDirectoryFail(error) {
+    //Error while creating directory
+    alert("Unable to create new directory: " + error.code);
+}
+
+  function fileSystemFail(evt) {
+    //Unable to access file system
+    alert(evt.target.error.code);
+ }
+}
+
+function filetransfer(download_link, fp) {
+var fileTransfer = new FileTransfer();
+// File download function with URL and local path
+fileTransfer.download(download_link, fp,
+    function (entry) 
+    {
+        alert("download complete: " + entry.fullPath);
+    },
+        function (error) {
+            //Download abort errors or download failed errors
+            alert("download error source " + error.source);
+                 }
+            );
+}
+  
+</script>
+</html>
